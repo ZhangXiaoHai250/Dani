@@ -3,18 +3,29 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
+[ExecuteAlways] // 允许在编辑器模式下预览效果
 public class Control : MonoBehaviour
 {
+    [Header("加载面板UI，将设置好的加载UI附着在此\\n确保UI在最底层\\n加载动画名称规范：\\n开始“LoadGameUiAnimationStart”\\n结束“LoadGameUiAnimationEnd”\\n设置好后在按钮调用PlayerGame()和LoadGame(场景索引)")]
     public GameObject loadGameUI;
     Animator loadGameAnimator;
     GameObject uiCanvas;
     private void Awake()
     {
-        loadGameAnimator = loadGameUI.GetComponent<Animator>();
+        try
+        {
+            loadGameAnimator = loadGameUI.GetComponent<Animator>();
+        }
+        catch
+        {
+            Debug.LogError("请添加动画器");
+        }
+        
     }
     private void Start()
     {
         StartCoroutine(LoadUI("LoadGameUiAnimationEnd"));
+
     }
     IEnumerator LoadGame(GameObject game)
     {
@@ -27,8 +38,16 @@ public class Control : MonoBehaviour
     }
     IEnumerator LoadUI(string animationName)
     {
-        loadGameAnimator.Play(animationName);
-        
+        try
+        {
+            loadGameAnimator.Play(animationName);
+        }
+        catch
+        {
+            Debug.LogError("请添加动画器,或者确保结束动画名称为：LoadGameUiAnimationStart 加载名称为：LoadGameUiAnimationStart");
+        }
+
+
         yield return null;
     }
     public void LoadGame(int i)
