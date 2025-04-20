@@ -36,9 +36,9 @@ AudioMixerController:
   m_UpdateMode: 0
   m_ExposedParameters:
   - guid: c1748fba024420f43980ec8102ddde31
-    name: MyExposedParam
+    name: Music
   - guid: 7e38dd2ba11566241b6ce3cd16e2c0fd
-    name: MyExposedParam 1
+    name: YinXiao
   m_AudioMixerGroupViews:
   - guids:
     - 9dc56af9df6843f40afdc42590b4e063
