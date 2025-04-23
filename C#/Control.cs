@@ -9,7 +9,6 @@ public class Control : MonoBehaviour
     [Header("加载面板UI，将设置好的加载UI附着在此\\n确保UI在最底层\\n加载动画名称规范：\\n开始“LoadGameUiAnimationStart”\\n结束“LoadGameUiAnimationEnd”\\n设置好后在按钮调用PlayerGame()和LoadGame(场景索引)")]
     public GameObject loadGameUI;
     Animator loadGameAnimator;
-    GameObject uiCanvas;
     private void Awake()
     {
         try
